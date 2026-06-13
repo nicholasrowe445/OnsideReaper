@@ -1,3 +1,12 @@
+
+window.addEventListener("error", event => {
+  const box = document.querySelector("#status");
+  if (box) box.textContent = "App error: " + (event.message || "unknown error");
+});
+window.addEventListener("unhandledrejection", event => {
+  const box = document.querySelector("#status");
+  if (box) box.textContent = "App error: " + ((event.reason && event.reason.message) || event.reason || "unknown error");
+});
 const API = "https://runescape.wiki/api.php";
 const WIKI_BASE = "https://runescape.wiki/w/";
 const MAP_GUIDE_TITLE = "Treasure Trails/Guide/Maps";
