@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OnsideReaper Clue Scanner</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#d4af37" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="OnsideReaper" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+</head>
+<body>
+  <main class="app">
+    <section class="hero title-hero">
+      <div class="rune-title-wrap" aria-label="OnsideReaper Clue Scanner">
+        <div class="scroll-mark">📜</div>
+        <h1 class="rune-title">OnsideReaper</h1>
+        <div class="rune-subtitle">RS3 Clue Scanner</div>
+      </div>
+      <p>Paste a screenshot, upload one, or type a clue. Text clues use OCR. Map clues use image matching against RS Wiki map clue images.</p>
+    </section>
+
+    <section class="card paste-zone" id="pasteZone" tabindex="0" aria-label="Paste screenshot area">
+      <div class="paste-title">Paste screenshot here</div>
+      <p class="hint">Click this box, then press <strong>Ctrl+V</strong>. You can also drag and drop a screenshot.</p>
+      <img id="preview" class="preview" alt="Pasted clue screenshot preview" hidden />
+      <div class="actions">
+        <input id="imageInput" type="file" accept="image/*" />
+        <input id="cameraInput" type="file" accept="image/*" capture="environment" />
+        <button id="scanBtn" class="secondary">Read text screenshot</button>
+        <button id="mapBtn" class="secondary">Match map screenshot</button>
+      </div>
+    </section>
+
+    <section class="card mode-card">
+      <label>Clue type</label>
+      <div class="mode-grid">
+        <label class="mode-pill"><input type="radio" name="mode" value="auto" checked> Auto</label>
+        <label class="mode-pill"><input type="radio" name="mode" value="text"> Text / emote / anagram</label>
+        <label class="mode-pill"><input type="radio" name="mode" value="map"> Map image</label>
+      </div>
+      <p class="hint small">Auto tries OCR first. If there is hardly any readable text, it switches to map image matching.</p>
+
+      <label for="tierSelect" class="tier-label">Clue difficulty for map matching</label>
+      <select id="tierSelect" class="tier-select">
+        <option value="all" selected>All difficulties</option>
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+        <option value="elite">Elite</option>
+        <option value="master">Master</option>
+      </select>
+      <p class="hint small">Pick the scroll tier before matching a map. This filters the image pool where the Wiki provides tier data, and your saved corrections also remember the selected tier.</p>
+    </section>
+
+    <section class="card">
+      <label for="clueText">Detected clue text</label>
+      <textarea id="clueText" rows="6" placeholder="Paste text here, or paste a screenshot above."></textarea>
+
+      <div class="actions">
+        <button id="searchBtn">Match text to RS Wiki</button>
+        <button id="autoBtn" class="secondary">Read + Match</button>
+        <button id="clearBtn" class="secondary">Clear</button>
+      </div>
+    </section>
+
+    <section id="status" class="status" aria-live="polite"></section>
+    <section id="results" class="results"></section>
+
+    <footer>
+      Uses the public RuneScape Wiki MediaWiki API and links users to original RS Wiki pages. Wiki content is not copied into this app.
+    </footer>
+  </main>
+  <script src="app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js"));
+    }
+  </script>
+</body>
+</html>
