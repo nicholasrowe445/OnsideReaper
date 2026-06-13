@@ -1,0 +1,222 @@
+:root {
+  color-scheme: dark;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #14192a;
+  color: #edf2ff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #293250, #111522 55%);
+}
+
+.app {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 32px 18px;
+}
+
+.hero, .card, .result, .status, footer {
+  background: rgba(31, 39, 65, 0.92);
+  border: 1px solid rgba(167, 189, 255, 0.18);
+  border-radius: 18px;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.22);
+}
+
+.hero, .card, .status, footer { padding: 22px; margin-bottom: 18px; }
+
+h1 { margin: 0 0 8px; font-size: clamp(28px, 5vw, 44px); }
+p { line-height: 1.55; }
+label, .paste-title { display: block; font-weight: 700; margin-bottom: 8px; color: #cdd9ff; }
+
+textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(167, 189, 255, 0.25);
+  background: #101624;
+  color: #f4f7ff;
+  resize: vertical;
+  font-size: 16px;
+}
+
+.actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 14px; }
+button, .button-link {
+  border: 0;
+  border-radius: 12px;
+  padding: 11px 15px;
+  background: #86a8ff;
+  color: #09111f;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+button.secondary { background: #33405f; color: #edf2ff; }
+
+.paste-zone {
+  border: 2px dashed rgba(134, 168, 255, 0.55);
+  cursor: pointer;
+}
+.paste-zone.active { border-color: #86a8ff; background: rgba(45, 57, 94, 0.98); }
+.hint { color: #b9c7f5; margin: 6px 0; }
+.preview {
+  display: block;
+  max-width: 100%;
+  max-height: 260px;
+  margin-top: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(167, 189, 255, 0.25);
+}
+
+.status { display: none; color: #fceeb1; }
+.results { display: grid; gap: 14px; }
+.result { padding: 18px; }
+.result h2 { margin: 0 0 8px; color: #d8e1ff; }
+.meta { color: #b9c7f5; font-size: 14px; }
+.match { color: #9df2bf; font-weight: 700; }
+.snippet { color: #cbd6ff; }
+footer { color: #aebce8; font-size: 14px; }
+
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.small {
+  font-size: 0.92rem;
+}
+
+.mode-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mode-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: #101624;
+  border: 1px solid rgba(167, 189, 255, 0.22);
+  color: #edf2ff;
+  cursor: pointer;
+}
+
+.map-result {
+  display: grid;
+  gap: 10px;
+}
+
+.map-thumb {
+  max-width: 260px;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(167, 189, 255, 0.25);
+  background: #101624;
+}
+
+.button-link.secondary-link {
+  background: #33405f;
+  color: #edf2ff;
+}
+
+.learned-selected {
+  outline: 2px solid rgba(120, 255, 170, 0.8);
+}
+
+.correct-map {
+  background: #2f7d46;
+}
+
+.learned-tools {
+  border-style: dashed;
+}
+
+.tier-label {
+  display: block;
+  margin-top: 18px;
+}
+
+.tier-select {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(14, 20, 38, 0.88);
+  color: inherit;
+  font: inherit;
+}
+
+.wrong-map {
+  background: #74313b;
+  color: #fff4f5;
+}
+
+/* OnsideReaper RuneScape-inspired title banner */
+.title-hero {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  background:
+    linear-gradient(180deg, rgba(59, 45, 25, 0.96), rgba(26, 22, 19, 0.96)),
+    radial-gradient(circle at top, rgba(236, 199, 89, 0.18), transparent 55%);
+  border: 2px solid rgba(212, 175, 55, 0.56);
+  box-shadow:
+    inset 0 0 0 2px rgba(0,0,0,0.45),
+    0 18px 45px rgba(0,0,0,0.35);
+}
+
+.title-hero::before,
+.title-hero::after {
+  content: "";
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  opacity: 0.8;
+}
+
+.title-hero::before { top: 12px; }
+.title-hero::after { bottom: 12px; }
+
+.rune-title-wrap {
+  padding: 8px 8px 4px;
+}
+
+.scroll-mark {
+  font-size: 34px;
+  filter: drop-shadow(0 3px 2px rgba(0,0,0,0.65));
+}
+
+.rune-title {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(38px, 9vw, 72px);
+  line-height: 0.95;
+  letter-spacing: 2px;
+  color: #f7d878;
+  text-shadow:
+    0 2px 0 #5d3b12,
+    0 4px 0 #1b1005,
+    0 0 12px rgba(255, 219, 112, 0.45),
+    3px 3px 4px #000;
+}
+
+.rune-subtitle {
+  margin-top: 8px;
+  color: #e6c46b;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 2px #000;
+}
